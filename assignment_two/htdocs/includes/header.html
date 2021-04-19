@@ -1,0 +1,77 @@
+<?php
+//begins the session
+session_start();
+?>
+<!DOCTYPE html>
+<html>
+<head>
+	<title> header_file </title>
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">  
+ 	
+ 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+	<link rel="stylesheet" href="includes/style.css">
+</head>
+
+<body>
+	<header>
+		<!--Navigation bar using bootstrap-->
+        <nav class="navbar navbar-expand-lg navbar-light">		
+            <img class="navbar-brand" src="upload/logo.png" alt="logo"/>
+            
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="	false" aria-label="Toggle navigation" style="color:red;">
+				<span class="navbar-toggler-icon"></span>
+            </button>
+          
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav ml-auto">
+			  
+				<li class="nav-item">
+                  <a class="nav-link" href="index.php" style="color:red;">Home <span class="sr-only"></span></a>
+                </li>
+
+                <li class="nav-item">
+                  <a class="nav-link" href="browse_items.php" style="color:red;">Menu</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="view_cart.php" style="color:red;">Shopping Cart</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="forum.php" style="color:red;">Reviews</a>
+                </li>
+ 
+                <!--Dropdown menu-->
+                <li class="nav-item dropdown" >
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" 
+				      aria-haspopup="true" aria-expanded="false" style="color:red;">My Account
+                  </a>
+
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  	<?php
+                  	if (isset($_SESSION['customer_id'])){ //logged in
+						echo '<a class="dropdown-item" href="logout.php" style="color:red;">Logout</a>
+						<a class="dropdown-item" href="Change_password.php" style="color:red;">Change Password</a>';
+
+						if ($_SESSION['user_level'] == 1){ //admin logged in
+							echo '<a class="dropdown-item" href="viewusers.php" style="color:red; ">View All Users</a>
+							<a class="dropdown-item" href="add_item.php" style="color:red; ">Add New Dish</a>
+							<a class="dropdown-item" href="add_user.php" style="color:red; ">Add New Customer</a>';
+						}
+					} else {//guest
+						echo '<a class="dropdown-item" href="register.php" style="color:red; ">Register</a>
+						<a class="dropdown-item" href="login.php" style="color:red; ">Login</a>
+						<a class="dropdown-item" href="forgot_password.php" style="color:red; ">Forgot Password</a>';
+					}
+					?>
+                    
+                  </div>
+                </li>		
+              </ul>
+            </div>
+          </nav>  
+	</header>
+	
+	<div id="content"><!-- Start of the page-specific content. -->

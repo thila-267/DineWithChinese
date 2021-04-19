@@ -1,0 +1,146 @@
+CREATE DATABASE assignment_two;
+USE assignment_two;
+
+DROP TABLE IF EXISTS items;
+CREATE TABLE items (
+item_id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+item_name VARCHAR(60) NOT NULL ,
+item_description VARCHAR(200),
+price DECIMAL(6,2) UNSIGNED NOT NULL,
+image_name VARCHAR(60) NOT NULL,
+PRIMARY KEY (item_id),
+INDEX (item_name),
+INDEX (price)
+) ENGINE=MyISAM;
+
+DROP TABLE IF EXISTS customers;
+CREATE TABLE customers (
+customer_id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+customer_fname VARCHAR(200),
+customer_lname VARCHAR(200) NOT NULL,
+address VARCHAR(500),
+ph_number VARCHAR(20) NOT NULL,
+email VARCHAR(60) NOT NULL,
+pass CHAR(40) NOT NULL,
+registration_date Date,
+user_level NOT NULL Default 0,
+active VARCHAR(200),
+PRIMARY KEY (customer_id),
+UNIQUE (email),
+INDEX login (email, pass)
+) ENGINE=MyISAM;
+
+DROP TABLE IF EXISTS orders;
+CREATE TABLE orders (
+order_id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+customer_id INT UNSIGNED NOT NULL,
+ddriver_id INT UNSIGNED NOT NULL,
+total DECIMAL(10,2) UNSIGNED NOT NULL,
+order_date TIMESTAMP,
+PRIMARY KEY (order_id),
+INDEX (customer_id),
+INDEX (ddriver_id),
+INDEX (order_date)
+) ENGINE=InnoDB;
+
+DROP TABLE IF EXISTS order_contents;
+CREATE TABLE order_contents (
+oc_id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+order_id INT UNSIGNED NOT NULL,
+item_id INT UNSIGNED NOT NULL,
+quantity TINYINT UNSIGNED NOT NULL DEFAULT 1,
+price DECIMAL(6,2) UNSIGNED NOT NULL,
+PRIMARY KEY (oc_id),
+INDEX (order_id),
+INDEX (item_id)
+) ENGINE=InnoDB;
+
+DROP TABLE IF EXISTS reviews;
+CREATE TABLE reviews (
+review_id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+parent_id INT UNSIGNED NOT NULL DEFAULT 0,
+customer_id INT UNSIGNED NOT NULL,
+body LONGTEXT NOT NULL,
+date_entered DATETIME NOT NULL,
+PRIMARY KEY (review_id),
+INDEX (parent_id),
+INDEX (customer_id),
+INDEX (date_entered)  
+) ENGINE=MyISAM;
+
+CREATE TABLE threads (
+thread_id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+customer_id INT UNSIGNED NOT NULL,
+subject VARCHAR(150) NOT NULL,
+PRIMARY KEY  (thread_id),
+INDEX (customer_id)
+);
+
+CREATE TABLE posts (
+post_id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+thread_id INT UNSIGNED NOT NULL,
+customer_id INT UNSIGNED NOT NULL,
+message TEXT NOT NULL,
+posted_on DATETIME NOT NULL,
+PRIMARY KEY (post_id),
+INDEX (thread_id),
+INDEX (customer_id)
+);
+
+INSERT INTO `threads` (`thread_id`, `customer_id`, `subject`) VALUES
+(1, 2, 'Food Favourite'),
+(2, 3, 'Crazy Experience');
+
+INSERT INTO `posts` (`post_id`, `thread_id`, `customer_id`, `message`, `posted_on`) VALUES
+(1, 1, 2, 'Great food and amazing services.', '2020-06-01 01:23:54'),
+(2, 2, 3, 'Was a crazy food experience that changed me', '2020-05-22 01:25:19');
+
+INSERT INTO items (
+    item_name,
+    item_description,
+    price,
+    image_name
+)
+VALUES
+    (
+        'Tomato Beef Chow mein',
+       	'Fried noodles with tomatoes and sliced tenderloin of beef, green peppers, onions and tomato sauce',
+        '12',
+        'tb_chow.jpg'
+    ),
+    (
+        'Chicken Almond Chow mein',
+        'Diced chicken, vegetables, mushroom waier chostnuts, toasted almonds, special sauce and noodles.',
+        '9',
+        'ca_chowmein.jpg'
+    ),
+    (
+        'Shrimp Chow mein',
+        'Fine-cut pork, Bean sprouts, celery, water chestnuts, mushroooms, onions mixed wiht shrimp served with fried noodles',
+        '10',
+        's_chowmein.jpg'
+    )
+    (
+        'Plain Pork Chow mein',
+        'Roasted pork, bean sprouts, peppers, onions and some nuts mixed with fried noodles.',
+        '12',
+        'pcm.jpg'
+    )
+    (
+        'Fresh Vegetable Chow mein',
+        'Fried noodels mixed with various vegetables and our restaurant special sauce.',
+        '8',
+        'vca.jpg'
+    )
+    (
+        'Almond Chicken Chop Suey',
+        'Diced boneless chicken mixed with toasted almonds, button mushrooms, celery served with steamed rice.',
+        '15',
+        'cafr.jpg'
+    )
+    (
+        'Vegetable Fried Rice',
+        'Steamed rice mixed with tossed vegetables and special sauce.',
+        '12',
+        'vfr.jpg'
+    );

@@ -1,0 +1,204 @@
+/*-------------------------------------------------------------*/
+/* general */
+* {
+	box-sizing: border-box;
+	border:0;
+	margin: 0;
+	padding:0;
+}
+
+a {
+	text-decoration:none;
+}
+
+a:hover {
+	text-decoration: none;
+}
+
+/*-------------------------------------------------------------*/
+/* body */
+body {
+	background: #ffffff;
+	font-family: SimSun;
+}
+
+/*-------------------------------------------------------------*/
+header{
+	text-align: center;
+	width: 100%;
+	min-height: 7vh;
+    overflow: visible;
+    line-height: 2.3em;
+
+}
+
+header nav img {
+	height: 2.0em;
+    width: 2.0em;
+	margin-top: 0px;
+}
+
+header nav h3 {
+	font-size: 2em;
+    margin: 0 1em 0 14em;
+	color: #D74739;
+}
+
+header nav ul li a {
+    text-decoration: none;
+    font-size: 1.5em;
+    padding: 0 1.0em;	
+	text-transform: uppercase;
+	color: red;
+}
+
+header .active {
+	background-color: #4d0000;
+	color: white;
+}
+
+header nav ul li:hover:not(.active) {
+    background-color: pink;
+    color: white;
+}
+
+.dropdown-menu, .dropdown-item{
+	background-color: white;
+}
+
+.dropdown-menu{
+	right:0;
+	left: auto;
+}
+
+.dropdown-item{
+	text-align: center;
+}
+
+.dropdown-item:hover:not(.active){
+	background-color: pink;
+}
+
+.navbar-brand{
+	transform: translateX(-50%);
+	left: 50%;
+	position: relative;
+	height: 150px;
+	width: 280px;
+}
+
+/*-------------------------------------------------------------*/
+/* content */
+#content{
+	/*border: 2px solid red;*/
+	height: auto;
+	margin: 0 auto;
+	padding: 0 0 20px;
+	width: 80%;/*751px*/
+}
+#content h1 {
+	border-bottom: 1px dashed #999;
+	font-size: 1.8em;
+	padding: 20px 0 0;
+	color: red;
+}
+
+#content p {
+	padding: 20px 20px 0;
+}
+
+
+/*--------------------------------------------------------------*/
+/* view_item page */
+.details a:link{
+	color: white;
+	background-color: #4d0000;
+	padding: 14px 25px;
+  	text-align: center;
+  	text-decoration: none;
+  	display: inline-block;
+}
+
+.details a:hover, a:active {
+  background-color: #F08080;
+}
+
+/*--------------------------------------------------------------*/
+/* browse_item page */
+.info_display{
+	color: #4d0000;
+	margin-left: 25%;
+	margin-top: 0.2em;
+}
+
+.info_display a{
+	color: #CB4335;
+	font-size: 20px;
+}
+
+#info_display_des{
+	font-size: 15px;
+	color:#4d0000;
+}
+
+.review, .review td {
+	border: 1px solid grey;
+} 
+
+/*--------------------------------------------------------------*/
+/* reviews page */
+#reviewhead{
+	background-color:;
+	color:red;
+}
+
+#replytext{
+	resize:none;
+	border:2px solid red;
+	width:90%;
+	height:100px;
+	margin-left:auto; 
+	margin-right:auto;
+	display: block;
+}
+
+#readtable{
+	width:60%;
+	text-align:center;
+	margin-left:auto; 
+	margin-right:auto;
+}
+
+
+/*-------------------------------------------------------------*/
+/* footer */
+#footer {
+	border-top: 1px solid #999; 
+	height: 50px;
+	margin: 0 auto;
+	padding: 10px;
+	text-align: center;
+	width: 751px;
+}
+
+#footer a{
+	float: right;
+	color: red;
+}
+
+
+/*-------------------------------------------------------------*/
+.error, .ad {
+	font-weight: bold;
+	color: green;/*#C00*/
+}
+
+input, select, textarea, .input{
+	padding: 5px;
+	font-weight: bold;
+	font-size: 1em;
+	color: #008040;
+	background: #FFFFFF;
+	border: 1px solid #004080;
+}
+

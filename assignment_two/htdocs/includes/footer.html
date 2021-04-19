@@ -1,0 +1,25 @@
+	<!-- Script 3.3 - footer.html -->
+	<!-- End of the page-specific content. -->
+	</div>
+	<div id="footer">
+		<div id="menu">
+			<a href="index.php" title="Home Page"> Home</a><br />
+			<?php
+			if (isset($_SESSION['customer_id'])){ //logged in
+				echo '<a href="logout.php" title="Logout"> Logout </a><br /> 
+				<a href="Change_password.php" title="Change Your Password"> Change Password</a><br />';
+			
+				if ($_SESSION['user_level'] == 1){ //admin logged in
+					echo '<a href="view_users.php" title="View All Users"> View Users </a><br />
+					<a href="add_item.php" title="Adding new items"> Add New Dish</a><br />';
+				}
+			} else { //not logged in
+				echo '<a href="register.php" title="Register"> Register </a><br />
+				<a href="login.php" title="Login">Login </a><br />
+				<a href="forgot_password.php" title="Password Retrieval">Forgot Password </a><br />';
+			}
+			ob_end_flush();
+			?>
+	</div>
+</body>
+</html>   
