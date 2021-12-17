@@ -7,7 +7,4 @@ Customers also can receive replies from other customers and owners.
 From an admin point of view, we can manage all new dishes and customer information. Only the admin will be able to add new dishes, delete a customer or thread and 
 update customer details. Admin would also be able to see all customers registered on the site. 
 
-We aimed to create a simple but effective dynamic e-commerce site that was database driven. However, when creating this site, difficulties did occur which were 
-evaluated within our team and overcome through communication and planning.
-
 WEBSITE DOMAIN ADDRESS : https://dinewithchinese.000webhostapp.com/index.php
